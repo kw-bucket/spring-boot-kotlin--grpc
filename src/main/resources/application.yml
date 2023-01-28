@@ -1,10 +1,10 @@
 server:
-  port: 8080
   application:
     name: sprint-boot-kotlin--grpc
-  servlet:
-    context-path: /demo-grpc
 
 logging:
   level:
     root: DEBUG
+
+grpc:
+  port: 6789
