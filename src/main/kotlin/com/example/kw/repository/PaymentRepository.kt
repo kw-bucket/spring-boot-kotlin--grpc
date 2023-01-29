@@ -1,8 +1,12 @@
 package com.example.kw.repository
 
 import com.example.kw.entity.Payment
-import org.springframework.data.repository.kotlin.CoroutineSortingRepository
+import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
+import java.time.LocalDateTime
 
 @Repository
-interface PaymentRepository : CoroutineSortingRepository<Payment, Long>
+interface PaymentRepository : JpaRepository<Payment, Long> {
+
+    fun findByDatetimeBetween(from: LocalDateTime, to: LocalDateTime): List<Payment>
+}

@@ -3,15 +3,20 @@ package com.example.kw.entity
 import com.example.kw.dto.payment.PaymentRequestDto
 import com.example.kw.dto.payment.PaymentResponseDto
 import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedDate
-import org.springframework.data.relational.core.mapping.Table
 import java.math.BigDecimal
 import java.time.LocalDateTime
+import javax.persistence.Entity
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
+import javax.persistence.Id
+import javax.persistence.Table
 
-@Table(name = "payment")
+@Entity
+@Table(name = "payment", schema = "example_grpc")
 data class Payment(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     val datetime: LocalDateTime,
     val customerId: String,

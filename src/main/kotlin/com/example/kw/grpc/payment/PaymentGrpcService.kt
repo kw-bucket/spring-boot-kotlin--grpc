@@ -8,10 +8,6 @@ import org.lognet.springboot.grpc.GRpcService
 class PaymentGrpcService : PaymentServiceGrpcKt.PaymentServiceCoroutineImplBase() {
 
     override suspend fun createPayment(request: PaymentRequest): PaymentResponse {
-        println("------>")
-        println(request)
-        println("<------")
-
         return PaymentResponse.newBuilder()
             .setFinalPrice("???")
             .setPoints(8)
