@@ -1,15 +1,15 @@
-package com.kw.grpc.controller.demo
+package com.example.kw.controller.demo
 
-import com.kw.grpc.service.demo.GreetingService
-import com.kw.grpc.service.demo.HelloReply
-import com.kw.grpc.service.demo.HelloRequest
+import com.example.kw.grpc.demo.Greeting.HelloReply
+import com.example.kw.grpc.demo.Greeting.HelloRequest
+import com.example.kw.grpc.demo.GreetingGrpcService
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class GreetingController(
-    private val greetingService: GreetingService,
+    private val greetingService: GreetingGrpcService,
 ) {
 
     @PostMapping("/say-hello")

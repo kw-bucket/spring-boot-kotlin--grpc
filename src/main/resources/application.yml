@@ -8,3 +8,15 @@ logging:
 
 grpc:
   port: 6789
+
+spring:
+  flyway:
+    enabled: false
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres?schema=example_grpc
+    username: root
+    password: ''
+    pool:
+      initial-size: 20
+      max-size: 30

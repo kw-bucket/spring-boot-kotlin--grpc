@@ -1,4 +1,4 @@
-package com.kw.grpc
+package com.example.kw
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

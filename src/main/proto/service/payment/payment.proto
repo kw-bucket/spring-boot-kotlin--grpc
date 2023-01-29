@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package com.example.kw.grpc.payment;
+
+import "google/protobuf/timestamp.proto";
+
+service PaymentService {
+  rpc createPayment (PaymentRequest) returns (PaymentResponse) {}
+}
+
+enum PaymentMethod {
+  CASH = 0;
+  CASH_ON_DELIVERY = 1;
+  VISA = 2;
+  MASTERCARD = 3;
+  AMEX = 4;
+  JCB = 5;
+  LINE_PAY = 6;
+  PAYPAY = 7;
+  POINTS = 8;
+  GRAB_PAY = 9;
+  BANK_TRANSFER = 10;
+  CHEQUE = 11;
+}
+
+enum DeliveryCourier {
+  YAMATO = 0;
+  SAGAWA = 1;
+}
+
+message PaymentRequest {
+  string customerId = 1;
+  string price = 2;
+  float priceModifier = 3;
+  PaymentMethod paymentMethod = 4;
+  google.protobuf.Timestamp datetime = 5;
+
+  message AdditionalItem {
+    optional string last4 = 1;
+    optional DeliveryCourier courier = 2;
+  }
+
+  optional AdditionalItem additionalItem = 6;
+}
+
+message PaymentResponse {
+  string finalPrice = 1;
+  int32 points = 2;
+}
