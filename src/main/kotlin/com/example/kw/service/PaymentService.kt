@@ -4,10 +4,8 @@ import com.example.kw.dto.payment.ListPaymentsRequestDto
 import com.example.kw.dto.payment.ListPaymentsResponseDto
 import com.example.kw.dto.payment.PaymentRequestDto
 import com.example.kw.dto.payment.PaymentResponseDto
-import com.example.kw.entity.Payment
 import com.example.kw.repository.PaymentRepository
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import org.springframework.stereotype.Service
 import kotlin.math.roundToInt
@@ -26,9 +24,10 @@ class PaymentService(
             PaymentResponseDto(
                 finalPrice = requestDto.price * requestDto.priceModifier,
                 points = (requestDto.price * requestDto.paymentMethod.pointsRate).roundToInt(),
-            ).also { paymentResponseDto ->
-                paymentRepository.save(Payment.of(requestDto, paymentResponseDto))
-            }
+            )
+//                .also { paymentResponseDto ->
+//                paymentRepository.save(Payment.of(requestDto, paymentResponseDto))
+//            }
         }
 
     suspend fun listPayments(requestDto: ListPaymentsRequestDto): ListPaymentsResponseDto =

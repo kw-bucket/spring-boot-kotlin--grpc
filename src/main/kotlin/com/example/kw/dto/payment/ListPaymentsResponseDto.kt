@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 data class ListPaymentsResponseDto(
-    val sales: List<SalePaymentDto>
+    val sales: List<SalePaymentDto>,
 ) {
     data class SalePaymentDto(
         val datetime: LocalDateTime,

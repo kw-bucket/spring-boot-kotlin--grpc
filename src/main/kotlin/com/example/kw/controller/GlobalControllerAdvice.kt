@@ -47,7 +47,8 @@ class GlobalControllerAdvisor {
                 else -> ex.message
             }
             is IllegalArgumentException,
-            is IllegalStateException -> ex.message
+            is IllegalStateException,
+            -> ex.message
             else -> null
         }
 
