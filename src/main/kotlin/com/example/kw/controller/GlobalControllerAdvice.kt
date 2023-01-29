@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException
 
 @ControllerAdvice
-class GlobalControllerAdvisor {
+class GlobalControllerAdvice {
 
     private val logger: Logger = LoggerFactory.getLogger(this::class.java)
 
@@ -46,9 +46,7 @@ class GlobalControllerAdvisor {
                 is MissingKotlinParameterException -> "${cause.path.last().fieldName} is missing or invalid"
                 else -> ex.message
             }
-            is IllegalArgumentException,
-            is IllegalStateException,
-            -> ex.message
+            is IllegalArgumentException, is IllegalStateException -> ex.message
             else -> null
         }
 
