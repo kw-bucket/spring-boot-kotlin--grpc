@@ -7,4 +7,20 @@ logging:
     root: DEBUG
 
 grpc:
-  port: 6789
+  server:
+    port: 6789
+
+spring:
+  flyway:
+    enabled: false
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: root
+    password: ''
