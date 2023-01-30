@@ -4,6 +4,7 @@
 
 - [Spring](https://spring.io/) spring framework
 - [gRPC-Spring-Boot-Starter](https://yidongnan.github.io/grpc-spring-boot-starter/en/) gRPC Spring Boot Starter
+- [ktlint-maven-plugin](https://github.com/gantsign/ktlint-maven-plugin) ktlint Maven Plugin
 - [Flywaydb](https://flywaydb.org/) for database migrations
 
 And I use these tools to test gRPC server (There are a lot of awesome tools actually)
