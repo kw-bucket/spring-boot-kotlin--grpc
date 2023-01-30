@@ -6,6 +6,11 @@
 - [gRPC-Spring-Boot-Starter](https://yidongnan.github.io/grpc-spring-boot-starter/en/) gRPC Spring Boot Starter
 - [Flywaydb](https://flywaydb.org/) for database migrations
 
+And I use these tools to test gRPC server (There are a lot of awesome tools actually)
+
+- [grpcurl](https://github.com/fullstorydev/grpcurl) command-line tool to interact with gRPC servers
+- [Postman](https://www.postman.com) API testing tool (v10.8.7 [now support gRPC](https://blog.postman.com/postman-now-supports-grpc/)) 
+
 ## System Requirements
 - Java 11
 - Kotlin 1.6.21
