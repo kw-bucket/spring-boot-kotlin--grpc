@@ -1,4 +1,4 @@
-# Demo! Spring Boot Kotlin -- gRPC! for microservices
+# Demo! Spring Boot Kotlin -- gRPC!
 
 ## Dependencies
 
