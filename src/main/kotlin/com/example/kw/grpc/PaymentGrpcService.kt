@@ -27,11 +27,10 @@ class PaymentGrpcService(
                 .build()
         }
 
-    override suspend fun listPayments(request: ListPaymentsGrpcRequest): ListPaymentsGrpcResponse {
-        return paymentService.listPayments(requestDto = ListPaymentsRequestDto.of(request)).let { listPaymentsDto ->
+    override suspend fun listPayments(request: ListPaymentsGrpcRequest): ListPaymentsGrpcResponse =
+        paymentService.listPayments(requestDto = ListPaymentsRequestDto.of(request)).let { listPaymentsDto ->
             ListPaymentsGrpcResponse.newBuilder()
                 .addAllSales(listPaymentsDto.sales.map { it.toProto() })
                 .build()
-        }
     }
 }
