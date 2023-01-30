@@ -63,7 +63,7 @@
     <logger name="io.netty" level="ERROR"/>
     <logger name="io.lettuce" level="ERROR"/>
     <logger name="reactor" level="ERROR" />
-    <logger name="org.mongodb.driver" level="INFO"/>
     <logger name="com.fasterxml.jackson.databind.introspect.POJOPropertyBuilder" level="ERROR"/>
     <logger name="software.amazon.awssdk" level="ERROR"/>
+    <logger name="io.grpc.netty.shaded.io.grpc.netty" level="ERROR"/>
 </configuration>
