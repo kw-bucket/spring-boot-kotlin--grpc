@@ -2,9 +2,9 @@
 
 ## Dependencies
 
-[Spring](https://spring.io/) spring framework
-[gRPC-Spring-Boot-Starter](https://yidongnan.github.io/grpc-spring-boot-starter/en/) gRPC Spring Boot Starter
-[Flywaydb](https://flywaydb.org/) for database migrations
+- [Spring](https://spring.io/) spring framework
+- [gRPC-Spring-Boot-Starter](https://yidongnan.github.io/grpc-spring-boot-starter/en/) gRPC Spring Boot Starter
+- [Flywaydb](https://flywaydb.org/) for database migrations
 
 ## System Requirements
 - Java 11
