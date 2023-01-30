@@ -32,5 +32,5 @@ class PaymentGrpcService(
             ListPaymentsGrpcResponse.newBuilder()
                 .addAllSales(listPaymentsDto.sales.map { it.toProto() })
                 .build()
-    }
+        }
 }

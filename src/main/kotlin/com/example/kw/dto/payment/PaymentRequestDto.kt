@@ -40,26 +40,40 @@ data class PaymentRequestDto(
             },
         )
     }
+
+    fun validate() {
+        require(paymentMethod.priceModifierRange.contains(priceModifier)) { "Price modifier out of range!" }
+
+        if (paymentMethod.type == PaymentType.CARD) {
+            check(value = additionalItem?.last4?.matches(regex = "\\d{4}".toRegex()) ?: false) {
+                "last4 must be 4 digits!"
+            }
+        }
+    }
 }
 
 enum class Courier {
     YAMATO, SAGAWA,
 }
 
+enum class PaymentType {
+    CASH, CARD, CASHLESS,
+}
 enum class PaymentMethod(
     val priceModifierRange: ClosedFloatingPointRange<Double>,
     val pointsRate: Double,
+    val type: PaymentType,
 ) {
-    CASH(priceModifierRange = (0.9..1.0), pointsRate = 0.05),
-    CASH_ON_DELIVERY(priceModifierRange = (1.0..1.02), pointsRate = 0.05),
-    VISA(priceModifierRange = (0.95..1.0), pointsRate = 0.03),
-    MASTERCARD(priceModifierRange = (0.95..1.0), pointsRate = 0.03),
-    AMEX(priceModifierRange = (0.98..1.01), pointsRate = 0.02),
-    JCB(priceModifierRange = (0.95..1.0), pointsRate = 0.05),
-    LINE_PAY(priceModifierRange = (1.0..1.0), pointsRate = 0.01),
-    PAYPAY(priceModifierRange = (1.0..1.0), pointsRate = 0.01),
-    POINTS(priceModifierRange = (1.0..1.0), pointsRate = 0.0),
-    GRAB_PAY(priceModifierRange = (1.0..1.0), pointsRate = 0.01),
-    BANK_TRANSFER(priceModifierRange = (1.0..1.0), pointsRate = 0.0),
-    CHEQUE(priceModifierRange = (0.9..1.0), pointsRate = 0.0),
+    CASH(priceModifierRange = (0.9..1.0), pointsRate = 0.05, type = PaymentType.CASH),
+    CASH_ON_DELIVERY(priceModifierRange = (1.0..1.02), pointsRate = 0.05, type = PaymentType.CASH),
+    VISA(priceModifierRange = (0.95..1.0), pointsRate = 0.03, type = PaymentType.CARD),
+    MASTERCARD(priceModifierRange = (0.95..1.0), pointsRate = 0.03, type = PaymentType.CARD),
+    AMEX(priceModifierRange = (0.98..1.01), pointsRate = 0.02, type = PaymentType.CARD),
+    JCB(priceModifierRange = (0.95..1.0), pointsRate = 0.05, type = PaymentType.CARD),
+    LINE_PAY(priceModifierRange = (1.0..1.0), pointsRate = 0.01, type = PaymentType.CASHLESS),
+    PAYPAY(priceModifierRange = (1.0..1.0), pointsRate = 0.01, type = PaymentType.CASHLESS),
+    POINTS(priceModifierRange = (1.0..1.0), pointsRate = 0.0, type = PaymentType.CASHLESS),
+    GRAB_PAY(priceModifierRange = (1.0..1.0), pointsRate = 0.01, type = PaymentType.CASHLESS),
+    BANK_TRANSFER(priceModifierRange = (1.0..1.0), pointsRate = 0.0, type = PaymentType.CASHLESS),
+    CHEQUE(priceModifierRange = (0.9..1.0), pointsRate = 0.0, type = PaymentType.CASHLESS),
 }

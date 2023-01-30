@@ -41,13 +41,14 @@ class GlobalControllerAdvice {
     )
     fun handleInvalidRequest(ex: Exception): ResponseEntity<ErrorResponseDto> {
         val description: String? = when (ex) {
+            is MethodArgumentNotValidException -> ex.fieldError.let { "${it?.field} - ${it?.defaultMessage}" }
             is HttpMessageNotReadableException -> when (val cause = ex.cause) {
                 is InvalidFormatException -> "${cause.path.last().fieldName} is missing or invalid"
                 is MissingKotlinParameterException -> "${cause.path.last().fieldName} is missing or invalid"
                 else -> ex.message
             }
             is IllegalArgumentException, is IllegalStateException -> ex.message
-            else -> null
+            else -> ex.message
         }
 
         return buildResponse(
