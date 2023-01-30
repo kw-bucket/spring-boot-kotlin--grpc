@@ -18,9 +18,7 @@ class PaymentService(
 
     suspend fun createPayment(requestDto: PaymentRequestDto): PaymentResponseDto =
         withContext(Dispatchers.IO) {
-            require(requestDto.paymentMethod.priceModifierRange.contains(requestDto.priceModifier)) {
-                "Price modifier out of range!"
-            }
+            requestDto.validate()
 
             PaymentResponseDto(
                 finalPrice = requestDto.price * requestDto.priceModifier,

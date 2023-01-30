@@ -21,14 +21,14 @@ class PaymentController(
 
     @PostMapping
     suspend fun createPayment(
-        @RequestBody @Valid
+        @Valid @RequestBody
         requestDto: PaymentRequestDto,
     ): ResponseEntity<PaymentResponseDto> =
         ResponseEntity.ok().body(paymentService.createPayment(requestDto = requestDto))
 
     @GetMapping
     suspend fun listPayments(
-        @RequestBody @Valid
+        @Valid @RequestBody
         requestDto: ListPaymentsRequestDto,
     ): ResponseEntity<ListPaymentsResponseDto> =
         ResponseEntity.ok().body(paymentService.listPayments(requestDto = requestDto))
