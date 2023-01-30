@@ -1,5 +1,7 @@
 # Demo! Spring Boot Kotlin -- gRPC!
 
+This service provides both API Http and gRPC (without duplicate code 🔥). So, Client can choose their communication method by gRPC or simple way Http.
+
 ## Dependencies
 
 - [Spring](https://spring.io/) spring framework
