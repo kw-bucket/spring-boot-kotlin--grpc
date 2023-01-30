@@ -11,6 +11,9 @@ grpc:
     port: 6789
 
 spring:
+  application:
+    name: sprint-boot-kotlin--grpc
+
   flyway:
     enabled: false
 
